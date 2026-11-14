@@ -1,0 +1,88 @@
+"""
+basic_calculator.py
+===================
+Initial baseline command-line calculator for Task 3.
+(Original beginner implementation from your internship practice).
+"""
+
+def calculator():
+    print("=" * 35)
+    print("       PYTHON CALCULATOR")
+    print("=" * 35)
+
+    while True:
+        try:
+            num1 = float(input("\nEnter first number: "))
+            operator = input("Enter operator (+, -, *, /): ").strip()
+            num2 = float(input("Enter second number: "))
+
+            if operator == "+":
+                result = num1 + num2
+
+            elif operator == "-":
+                result = num1 - num2
+
+            elif operator == "*":
+                result = num1 * num2
+
+            elif operator == "/":
+                if num2 == 0:
+                    print("\nError: Cannot divide by zero!")
+                    continue
+                result = num1 / num2
+
+            else:
+                print("\nError: Invalid operator!")
+                print("Please use +, -, *, or /.")
+                continue
+
+            print("\n" + "-" * 35)
+            print(f"First number : {num1:g}")
+            print(f"Operator     : {operator}")
+            print(f"Second number: {num2:g}")
+            print(f"Result       : {result:g}")
+            print("-" * 35)
+
+        except ValueError:
+            print("\nError: Please enter valid numbers.")
+
+        except OverflowError:
+            print("\nError: The result is too large.")
+
+        again = input(
+            "\nWould you like to calculate again? (y/n): "
+        ).strip().lower()
+
+        if again != "y":
+            print("\nThank you for using Python Calculator!")
+            break
+
+
+# -------------------------------------------------------------
+# Optional: Even simpler beginner version (without while loop)
+# -------------------------------------------------------------
+def simple_one_shot_calculator():
+    print("===== PYTHON CALCULATOR =====")
+    num1 = float(input("Enter first number: "))
+    operator = input("Enter operator (+, -, *, /): ").strip()
+    num2 = float(input("Enter second number: "))
+
+    if operator == "+":
+        result = num1 + num2
+    elif operator == "-":
+        result = num1 - num2
+    elif operator == "*":
+        result = num1 * num2
+    elif operator == "/":
+        if num2 != 0:
+            result = num1 / num2
+        else:
+            result = "Error: Cannot divide by zero"
+    else:
+        result = "Invalid operator"
+
+    print("Result: ", result)
+
+
+if __name__ == "__main__":
+    calculator()
