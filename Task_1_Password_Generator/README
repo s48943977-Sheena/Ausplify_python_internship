@@ -1,0 +1,141 @@
+# Smart Password Generator Pro
+
+**Auspify Technologies — Python Development Internship**  
+*Task 1: Desktop Password Generation & Security Analysis Application*
+
+---
+
+## 📌 Project Overview
+
+**Smart Password Generator Pro** is a modern, cryptographically secure desktop application developed in Python with Tkinter. It generates high-entropy, customizable passwords and evaluates password strength through a built-in educational security analyzer.
+
+Traditional password generators often rely on Python's standard `random` module, which uses the pseudo-random Mersenne Twister algorithm. Because Mersenne Twister is deterministic and prone to state reconstruction, this application exclusively utilizes Python's **`secrets` module** (PEP 506 / RFC 4086 compliant), sourcing true entropy from OS-level cryptographic random number generators (e.g., `BCryptGenRandom` on Windows, `/dev/urandom` on POSIX systems).
+
+---
+
+## ✨ Key Features
+
+1. **Cryptographically Secure Pseudo-Random Number Generation (CSPRNG):**
+   - Built on Python's `secrets` module to resist predictability and brute-force attacks.
+   - Guarantees at least one character from every active character pool.
+
+2. **Preset Profiles:**
+   - **Strong Password:** 20 characters, all pools active, maximum entropy.
+   - **Website:** 16 characters, balanced for universal website compatibility.
+   - **Wi-Fi:** 20 characters, symbols disabled and ambiguous characters excluded for easy manual entry.
+   - **Numeric PIN:** 8 digits, numbers only.
+
+3. **Fine-Grained Customization:**
+   - Adjustable length slider (1 to 128 characters).
+   - Toggle uppercase (`A-Z`), lowercase (`a-z`), numbers (`0-9`), and symbols (`!@#$...`).
+   - Ambiguous character filtering (removes confusing glyphs such as `O`, `0`, `I`, `l`, `1`).
+
+4. **Batch Generation:**
+   - Generate between 1 and 100 unique passwords in a single batch.
+
+5. **Integrated Educational Security Analyzer:**
+   - Real-time scoring based on length, character diversity, and character repetition.
+   - Dictionary lookup against common vulnerable passwords (`password123`, `qwerty`, etc.).
+   - Pattern detection for sequential characters (`123456`, `abcdef`).
+   - Actionable remediation advice and visual ratings (*Strong*, *Moderate*, *Weak*).
+
+6. **Native Tkinter GUI:**
+   - Clean, modern layout requiring zero third-party dependencies.
+   - One-click copy to clipboard with status confirmation.
+
+---
+
+## 📂 Project Directory Structure
+
+```text
+Auspify_Python_Internship/
+├── smart_password_generator.py      # Main desktop GUI application
+├── Password_Generator.py            # Baseline CLI / generation script
+├── README.md                        # Complete project documentation
+├── test_cases.md                    # Verification test report (TC01 - TC08)
+├── screenshots/                     # Application screenshots and demo captures
+│   └── README.md                    # Screenshot guide
+└── Task_1_Password_Generator/       # Modular engine & automated test suite
+    ├── password_generator.py        # Core cryptographic engine class
+    └── test_password_generator.py   # Unit test suite (unittest framework)
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Operating System:** Windows 10/11, macOS, or Linux
+- **Python Version:** Python 3.8 or higher
+- **Dependencies:** None! Built purely using the Python Standard Library (`tkinter`, `secrets`, `string`, `unittest`).
+
+### How to Run
+
+1. Open your terminal or Command Prompt in the project directory:
+   ```powershell
+   cd Auspify_Python_Internship
+   ```
+
+2. Run the main application:
+   ```powershell
+   python smart_password_generator.py
+   ```
+
+3. (Optional) Run the baseline script:
+   ```powershell
+   python Password_Generator.py
+   ```
+
+---
+
+## 🧪 Testing and Quality Assurance
+
+A rigorous test suite has been implemented to guarantee reliability, input validation, and cryptographic guarantees.
+
+### 1. Automated Unit Tests
+
+Run the automated test suite with Python's built-in `unittest` runner:
+
+```powershell
+python -m unittest Task_1_Password_Generator/test_password_generator.py
+```
+
+All unit tests verify:
+- Length boundaries (min 4, max 128).
+- Selection of individual and combined character categories.
+- Ambiguous character exclusions.
+- Batch uniqueness guarantees.
+- Zero-pool and out-of-bounds error handling.
+
+### 2. Manual & GUI Test Verification
+
+Refer to [`test_cases.md`](test_cases.md) for the complete manual test execution matrix (TC01 to TC08), including test environments, inputs, outputs, and observed results.
+
+---
+
+## 📸 Screenshots
+
+Screenshots showcasing key capabilities are stored in the [`screenshots/`](screenshots/) directory:
+- **Main GUI:** Standard strong password generation.
+- **Preset Profile:** Numeric PIN generation.
+- **Security Analyzer:** Real-time feedback on weak vs. strong passwords.
+- **Input Validation:** Error prevention when invalid settings are supplied.
+
+---
+
+## 📄 Submission Checklist
+
+- [x] Python application runs cleanly without errors
+- [x] Comprehensive documentation in `README.md`
+- [x] Verified test execution in `test_cases.md`
+- [x] Dedicated `screenshots/` directory created
+- [x] Clean archive `Smart_Password_Generator_Pro.zip` prepared (excluding `__pycache__` and `.pyc`)
+
+---
+
+## 👤 Author Information
+
+- **Internship:** Auspify Technologies — Python Development Internship
+- **Project:** Smart Password Generator Pro
+- **Submission Deadline:** November 16, 2026
