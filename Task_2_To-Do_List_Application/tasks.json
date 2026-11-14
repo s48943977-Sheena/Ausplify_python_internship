@@ -1,0 +1,14 @@
+[
+    {
+        "title": "python internship",
+        "completed": false,
+        "priority": "Medium",
+        "due_date": "2026-11-16"
+    },
+    {
+        "title": "contro system exam question 1",
+        "completed": false,
+        "priority": "Medium",
+        "due_date": "2026-6-5"
+    }
+]
